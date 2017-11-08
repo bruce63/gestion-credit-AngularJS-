@@ -1,0 +1,59 @@
+
+  <h1>Formulaire de création de client</h1>
+  <br />
+  <div >
+    <form novalidate class="simple-form" name="myform">
+      <p><label>Prenom :
+        <input name="prenom" type="text" ng-model="personne.prenom" required/>
+        <br/>
+        <span ng-show="myform.prenom.$invalid">Veuillez saisir un prenom</span>
+      </label>
+      </p>
+      <p><label>Nom :
+        <input name="nom" type="text" ng-model="personne.nom" required/>
+        <br/>
+        <span ng-show="myform.nom.$invalid">Veuillez saisir un nom</span>
+      </label>
+      </p>
+      <p><label>Tel : <input name="tel" type="number" ng-model="personne.tel" ng-pattern="/^[0-9]*$/" required/>
+        <br/>
+        <span ng-show="myform.tel.$invalid">Veuillez saisir un numero de telephone</span>
+      </label>
+      </p>
+      <p><label>Mail : <input name="mel" type="email" ng-model="personne.mel" required/>
+        <br/>
+        <span ng-show="myform.mel.$invalid">Veuillez saisir une adresse mail</span>
+      </label>
+      </p>
+      <p>
+        <label>Montant du crédit:
+          <!-- <input name="credit" type="number" ng-model="personne.credit" required> -->
+          <select ng-model="personne.credit" ng-options="montant for montant in montantsCredit" required></select>
+          <br/>
+          <span ng-show="myform.credit.$invalid">Veuillez saisir un montant pour le credit</span>
+        </label>
+      </p>
+      <input type="button"  value="Reset" />
+      <input type="submit"  ng-click="valider()" value="Save" />
+      <input type="submit" ng-click="validerGet()" value="Save get" />
+    </form>
+
+    <br />
+
+    <div ng-repeat="entry in array">
+      {{entry.nom | uppercase}}
+      {{entry.prenom}}
+      {{entry.tel}}
+      {{entry.mel}}
+      {{entry.credit | limitTo:4 | currency : "€" }}
+    </div>
+
+    <br />
+
+    <div>
+
+    </div>
+
+  </div>
+
+
